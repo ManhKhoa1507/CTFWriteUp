@@ -72,8 +72,39 @@
    Và phần cuối của flag : **_35844447}**
 
    Vậy flag của bài này là : **picoCTF{t h4ts_4_l0 t_0f_pl4c3s_2_lO0k_35844447}**
+  ## Who are you ? 
+   Bài này khi truy cập http://mecury.picoctf.net:36622 sẽ ra được giao diện như thế này
+   
+   <img src="https://i.imgur.com/2e5ZndL.png" title="source: imgur.com" />
+   
+   OK ở đây bài này có đề cập đến việc chỉ có PicoBrowser mới được phép truy cập, mình chuyển request sang Burp Suite vào phần Repeater và thay đổi giá trị User-agent: PicoBrowser
 
-	
-	
-
+   <img src="https://i.imgur.com/Hr6ok2X.png" title="source: imgur.com" />
+   
+   Hint tiếp theo là bài này không tin người truy cập từ trang web khác, nên mình suy nghĩ đến việc thêm  header Referer(https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) của chính bài này (Referer: http://mercury.picoctf.net:36622) và kết quả là
+   
+   <img src="https://i.imgur.com/8qcOVHN.png" title="source: imgur.com" />
+   
+   Hint tiếp theo liên quan đến thời gian vậy mình thêm header Date(https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Date) liên quan đến năm 2018 là được, mình thêm header Date: 1/1/2018
+   
+   <img src="https://i.imgur.com/fdCLuKP.png" title="source: imgur.com" />
+   
+   Hint tiếp theo liên quan đến header DNT (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT) khi DNT: 0 người dùng sẽ cho phép việc theo dõi trên chính trang web này và ngược lại khi DNT: 1. Vậy ở đây mình thêm DNT = 0
+   
+   <img src="https://i.imgur.com/8mPwKgB.png" title="source: imgur.com" />
+   
+   Hint kế tiếp nói rằng chỉ tin những người truy cập đến từ Thụy Điển, ở đây mình nghĩ đến header X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For) để đổi vị trí =))
+   
+   Mình kiếm 1 trang web ở Thụy Điển  https://sweden.se (Mình cũng không biết web này làm gì nhưng mà cảm ơn :3 ) 
+   
+   Và đổi địa chỉ web ra IP ( Mình dùng tool ở https://www.site24x7.com/find-ip-address-of-web-site.html và có được IP: 139.162.171.198 thêm header X-Forwarded-For: 139.162.171.198 vào thôi  
+   
+   <img src="https://i.imgur.com/Ys1bs4k.png" title="source: imgur.com" />
+   
+   Và hint kế tiếp nói rằng mình ở Thụy Điển nhưng không nói tiếng Thụy Điển ?? :D ?? . Mình thêm giá trị sv vào header Accept-Language là xong
+   
+   <img src="https://i.imgur.com/xPw6vzD.png" title="source: imgur.com" />
+   
+   Flag của bài này : picoCTF{http_h34d3rs_v3ry_c0Ol_much_w0w_0da16bb2}
+   
    
