@@ -112,8 +112,6 @@
    
    <img src="https://i.imgur.com/VYMPGQI.png" title="source: imgur.com" />
    
-   Source file của bài này 
-   
    OK khi mình thử truy cập /robots.txt
    
    <img src="https://i.imgur.com/H6SnPRy.png" title="source: imgur.com" />
