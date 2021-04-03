@@ -7,8 +7,8 @@
   4. Super Serial 
   
 # Web exploitation
-  ## Cookies 
-   Ở bài này khi truy cập http://mecury.picoctf.net:54219 trang web sẽ hiện giao diện thế này:
+  ## 1.Cookies 
+   Link: http://mecury.picoctf.net:54219 
    
    <img src="https://i.imgur.com/NmcUoOv.png" title="source: imgur.com" />
     
@@ -21,8 +21,8 @@
     
    <img src="https://i.imgur.com/sBvOAcN.png" title="source: imgur.com" />
     
-   Giá trị của cookie name=0
-   Vậy giá trị name sẽ tăng dần ( ͡° ͜ʖ ͡°) vậy khi name tăng 1 giá trị nào đó thì sao 
+   Giá trị của cookie name=0.
+   Vậy giá trị name sẽ tăng dần ( ͡° ͜ʖ ͡°) vậy khi name tăng 1 giá trị nào đó thì sao??  
    Mình dùng Burp Suite thử và gửi request đó đến phần Instruder =)) ở phần payload mình chọn Payload type là number và From = 0, To = 10 và Step = 1 và Start Attack 
    Kết quả sẽ ra thế này
    
@@ -34,8 +34,8 @@
    
    Vậy flag của bài này là **picoCTF{3v3ry1_l0v3s_c00k135_96cdadfd}**
    
-  ## Scavenger Hunt
-   Bài này khi mình truy cập đến http://mecury.picoctf.net:5080 thì sẽ được giao diện thế này
+  ## 2.Scavenger Hunt
+   Link: http://mecury.picoctf.net:5080 
 	
    <img src="https://i.imgur.com/hRkHawm.png" title="source: imgur.com" />
 	
@@ -72,8 +72,8 @@
    Và phần cuối của flag : **_35844447}**
 
    Vậy flag của bài này là : **picoCTF{t h4ts_4_l0 t_0f_pl4c3s_2_lO0k_35844447}**
-  ## Who are you ? 
-   Bài này khi truy cập http://mecury.picoctf.net:36622 sẽ ra được giao diện như thế này
+  ## 3.Who are you ? 
+   Link: http://mecury.picoctf.net:36622 
    
    <img src="https://i.imgur.com/2e5ZndL.png" title="source: imgur.com" />
    
@@ -105,6 +105,73 @@
    
    <img src="https://i.imgur.com/xPw6vzD.png" title="source: imgur.com" />
    
-   Flag của bài này : picoCTF{http_h34d3rs_v3ry_c0Ol_much_w0w_0da16bb2}
+   Flag của bài này : **picoCTF{http_h34d3rs_v3ry_c0Ol_much_w0w_0da16bb2}**
+   
+  ## 4.Super Serial
+   Link: http://mercury.picoctf.net:42449
+   
+   <img src="https://i.imgur.com/VYMPGQI.png" title="source: imgur.com" />
+   
+   Source file của bài này 
+   
+   OK khi mình thử truy cập /robots.txt
+   
+   <img src="https://i.imgur.com/H6SnPRy.png" title="source: imgur.com" />
+   
+   Mình truy cập đến admin.phps xem 
+   
+   <img src="https://i.imgur.com/1NY81cl.png" title="source: imgur.com" />
+   
+   Không tìm thấy trang, vậy mình thử truy cập đến index.phps xem =)) và ở đây có source code PHP của bài 
+   
+   Sau một hồi mò mẫm thì mình phát hiện được 3 file là : *index.phps, cookie.phps và authentication.phps*
+   
+  ### index.phps
+  
+   <img src="https://i.imgur.com/r2Y3vJA.png" title="source: imgur.com" > 
+  
+  ### cookie.phps
+  
+   <img src="https://i.imgur.com/KZTDYJ7.png" title="source: imgur.com" />
+  
+  ### authentication.phps
+  
+   <img src="https://i.imgur.com/eOKKvXv.png" title="source: imgur.com" />
+   
+   Hint của bài này là tìm flag trong file ../flag . Mình để ý thấy trong authentication.phps có hàm read_log() trong class access_log, và hàm này được gọi ở trong hàm _toString() . 
+
+    function __toString() {
+        return $this->read_log();
+    }
+    function read_log() {
+        return file_get_contents($this->log_file);
+    }
+   
+   Vậy mình chỉ cần gọi $log = new access_log(../flag) và tiếp cận được flag
+   
+    $log = new access_log("access.log");
+   
+   Mình kiểm tra tiếp 2 file index.phps và cookie.phps và để ý thấy cookie có thể được gán bằng 2 cách 
+   
+    1. setcookie("login", urlencode(base64_encode(serialize($perm_res))), time() + (86400 * 30), "/");
+	2. $perm = unserialize(base64_decode(urldecode($_COOKIE["login"])));
+	
+   Ở đây mình chỉ cần gán cookie theo kiểu unserialize của đề bài 
+   
+   OK, ở đây mình sử dụng kĩ thuật PHP Object Injection (https://owasp.org/www-community/vulnerabilities/PHP_Object_Injection) và gán vào cookie là xong
+   
+   gán cookie là login=O:10:"access_log":1:{s:8:"log_file";s:7:"../flag";} và decode dạng base64 TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9
+   
+   và vào link http://mercury.picoctf.net:42449/authentication.php để xem flag 
+   
+   <img src="https://i.imgur.com/X03BiBw.png" title="source: imgur.com" />
+   
+   Vậy flag của bài là **picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_9d0864e2}**
+   
+   
+   
+   
+   
+  
    
    
