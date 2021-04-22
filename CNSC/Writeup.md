@@ -5,7 +5,7 @@
   ## Web01
    Link: http://45.122.249.68:8080/
    
-   Mình vào phần source code và dựa theo đó tạo một user và lấy được money = 2000 và tạo một cookie có giá trị username và money
+   Mình vào phần source code và dựa theo đó tạo một user và lấy được money = 2000 đoạn code này c
    
    <img src="https://imgur.com/idgQiXI.png" title="source: imgur.com" />
    
@@ -23,7 +23,7 @@
 
    Và lấy được Secret key để tạo cookie 
    
-   <img src="https://imgur.com/SBaeOyT.png" title="source: imgur.com" />
+   <img src="https://imgur.com/Wi6RtZr.png" title="source: imgur.com" />
 
    Secret key **1235_anh_co_danh_roi_nhip_nao_khong**
    
