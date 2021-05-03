@@ -5,7 +5,7 @@
   ## Web01
    Link: http://45.122.249.68:8080/
    
-   Mình vào phần source code và dựa theo đó tạo một user và lấy được money = 2000 đoạn code này c
+   Mình vào phần source code và dựa theo đó tạo một user và lấy được money = 2000 
    
    <img src="https://imgur.com/idgQiXI.png" title="source: imgur.com" />
    
