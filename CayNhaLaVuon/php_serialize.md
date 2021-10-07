@@ -86,7 +86,7 @@ else{
 ## Create Payload
   Sử dụng vscode để debug và lệnh php -S 127.0.0.1 9000 code.php để debug trên localhost
  
-  <img src="https://imgur.com/nzePFET"/>
+  <img src="https://imgur.com/nzePFET.png"/>
   
   Tạo thêm 1 đoạn code để tạo serialize payload 
 
@@ -130,7 +130,7 @@ else{
   
   Nhưng khi thực thi payload này kết quả sẽ **không** trả về. Do việc deserialize bị lỗi 
 
-  <img src="https://imgur.com/zyQvjMv" />
+  <img src="https://imgur.com/zyQvjMv.png" />
   
   Vì vậy cần sửa lại payload 1 chút để khi deserialize sẽ cho ra kết quả mong muốn
 
@@ -144,7 +144,7 @@ else{
 
   Kết quả ez :D 
 
-  <img src="https://imgur.com/phCU6LU" />
+  <img src="https://imgur.com/phCU6LU.png" />
 
 ## Tài liệu tham khảo
   PHP Classes and Object : https://www.php.net/manual/en/language.oop5.php
