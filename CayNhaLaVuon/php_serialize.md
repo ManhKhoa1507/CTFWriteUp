@@ -144,7 +144,7 @@ else{
 
   Kết quả ez :D 
 
-  <img src="https://imgur.com/phCU6LU.png" />
+  <img src="https://imgur.com/CyXL3sD.png" />
 
 ## Tài liệu tham khảo
   PHP Classes and Object : https://www.php.net/manual/en/language.oop5.php
